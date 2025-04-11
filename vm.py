@@ -35,6 +35,7 @@ class BVM:
             CoolOps.PUSH1: 3,
             CoolOps.ADD: 3,
             CoolOps.SUB: 5,
+            CoolOps.MUL: 5,   # New: Gas cost for MUL, similar to EVM
             CoolOps.SSTORE: 20000,  # Simplified; could be dynamic
             CoolOps.SLOAD: 200,
             CoolOps.JUMPI: 10,
@@ -116,6 +117,14 @@ class BVM:
                 self.pc += 1
             else:
                 self.fail("Stack underflow")
+        elif instruction.opcode == CoolOps.MUL:  # New: Handle MUL
+            if len(self.stack) >= 2:
+                b, a = self.stack.pop(), self.stack.pop()
+                self.stack.append(a * b)
+                logger.debug(f"Multiplied {a} * {b} = {a * b}")
+                self.pc += 1
+            else:
+                self.fail("Stack underflow")
         elif instruction.opcode == CoolOps.SUB:
             if len(self.stack) >= 2:
                 b, a = self.stack.pop(), self.stack.pop()
@@ -171,8 +180,10 @@ class BVM:
     def execute(self) -> Receipt:
         """Execute all instructions and return a receipt."""
         logger.info("Starting execution")
+        # logger.debug(f"Stack before transaction(vm): {self.stack}")  # Log stack before
         while self.running:
             self.step()
+        # logger.debug(f"Stack after transaction(vm): {self.stack}")  # Log stack after
         return Receipt(
             success=not self.failed,
             gas_used=self.gas_used,

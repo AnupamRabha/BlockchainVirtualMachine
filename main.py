@@ -5,7 +5,7 @@ from typing import Tuple, Optional
 
 from opcodes import CoolOps
 from transaction import Transaction
-from compiler import CCompiler, JavaCompiler, CppCompiler
+from compiler import CCompiler, JavaCompiler, CppCompiler,SolidityCompiler
 from blockchain import Blockchain
 
 logger = logging.getLogger(__name__)
@@ -15,16 +15,18 @@ def get_user_contract() -> Tuple[str, str, Optional[callable]]:
     print("1. C (expects .c file)")
     print("2. Java (expects .java file)")
     print("3. C++ (expects .cpp file)")
-    choice = input("Enter 1, 2, or 3: ").strip()
+    print("4. Sol (expects .sol file)")
+    choice = input("Enter 1, 2, 3 or 4: ").strip()
 
     language_map = {
         "1": ("C", CCompiler.brew, ".c"),
         "2": ("Java", JavaCompiler.brew, ".java"),
-        "3": ("C++", CppCompiler.brew, ".cpp")
+        "3": ("C++", CppCompiler.brew, ".cpp"),
+        "4": ("Sol", SolidityCompiler.brew, ".sol")
     }
 
     if choice not in language_map:
-        raise ValueError("Invalid language choice. Please select 1, 2, or 3.")
+        raise ValueError("Invalid language choice. Please select 1, 2, 3 or 4.")
 
     language, compiler, expected_extension = language_map[choice]
 

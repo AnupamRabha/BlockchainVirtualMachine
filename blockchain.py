@@ -17,6 +17,10 @@ class Blockchain:
 
     def run_batch(self, transactions: List[Transaction]) -> Receipt:
         """Execute a batch of transactions."""
+        from logging_config import configure_logging
+        configure_logging()
+        logger = logging.getLogger(__name__)
+        logger.setLevel(logging.DEBUG)  
         logger.info(f"Processing batch of {len(transactions)} transactions")
         local_storage = copy.deepcopy(self.global_storage)
         batch_logs = []
@@ -28,7 +32,11 @@ class Blockchain:
             vm = BVM(tx.bytecode, gas_limit=1000000, call_data=tx.call_data,
                      read_keys=tx.read_keys, write_keys=tx.write_keys)
             vm.storage = copy.deepcopy(local_storage)
+            # Log stack before execution
+            # logger.debug(f"Stack before transaction execution(blockchain): {vm.stack}")
             receipt = vm.execute()
+            # Log stack before execution
+            # logger.debug(f"Stack after transaction execution(blockchain): {vm.stack}")
             total_gas += receipt.gas_used
             batch_logs.extend(receipt.logs)
             if receipt.success:
@@ -41,6 +49,10 @@ class Blockchain:
 
     def process_transactions(self, transactions: List[Transaction]) -> List[Receipt]:
         """Process transactions in parallel batches."""
+        from logging_config import configure_logging
+        configure_logging()
+        logger = logging.getLogger(__name__)
+        # logger.setLevel(logging.DEBUG) 
         logger.info("Starting transaction processing")
         batches = []
         current_batch = []

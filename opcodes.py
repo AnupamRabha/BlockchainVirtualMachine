@@ -10,3 +10,4 @@ class CoolOps:
     SLOAD = 0x54     # Loads from persistent storage
     JUMPI = 0x57     # Conditional jump
     JUMP = 0x56      # Unconditional jump
+    MUL = 0x02       #Multiplication
