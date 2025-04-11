@@ -62,7 +62,7 @@ def get_user_contract() -> Tuple[str, str, Optional[callable]]:
             }
         }
         """)
-    else:  # C++
+    elif language == "C++":
         print("""
         #include <cstdint>
         class Contract {
@@ -73,6 +73,19 @@ def get_user_contract() -> Tuple[str, str, Optional[callable]]:
                 foo = 100 - 30;
                 bar = foo;
                 foo = 20 + 10;
+            }
+        };
+        """)
+    else:  # Solidity
+        print("""
+        contract MyContract {
+            uint256 public foo;
+            uint256 public bar;
+
+            function calc() public {
+                foo = 100 + 30;
+                bar = foo; 
+                foo = 20 - 10;
             }
         };
         """)
