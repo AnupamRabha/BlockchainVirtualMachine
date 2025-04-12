@@ -1,313 +1,395 @@
 INFO: 
---- Processing Sol Contract ---
-INFO: Compiling Solidity contract
-DEBUG: Parsed Solidity statements: ['foo = 10 * 20']
-DEBUG: Detected state variables: ['foo']
-DEBUG: Processing statement: 'foo = 10 * 20'
-DEBUG: Compiled foo = 10 * 20 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-INFO: Compiled bytecode: 300a30140c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
-INFO: Starting transaction processing
-INFO: Created 2 batches
-INFO: Processing batch of 1 transactions
-INFO: Transaction 1: Bytecode=300a30140c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
-INFO: Initializing BVM
-INFO: Parsing bytecode
-DEBUG: Parsed: Opcode: 0x30, Data: 0a
-DEBUG: Parsed: Opcode: 0x30, Data: 14
-DEBUG: Parsed: Opcode: 0xc, Data: None
-INFO: Processing batch of 1 transactions
-INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
-DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Parsed: Opcode: 0x0, Data: None
-INFO: Gas Limit: 1000000, Instructions: 5
-INFO: Initializing BVM
-INFO: Parsing bytecode
-INFO: Starting execution
-DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: PC=0, Stack=[], Storage={}
-DEBUG: Parsed: Opcode: 0x0, Data: None
-INFO: Gas Limit: 1000000, Instructions: 2
-INFO: Executing: Opcode: 0x30, Data: 0a
-DEBUG: Consuming 3 gas for opcode 0x30
-INFO: Starting execution
-DEBUG: Gas Used: 3, Remaining: 999997
-DEBUG: Pushed 10
-DEBUG: PC=1, Stack=[10], Storage={}
-DEBUG: PC=0, Stack=[], Storage={}
-INFO: Executing: Opcode: 0x30, Data: 14
-DEBUG: Consuming 3 gas for opcode 0x30
-INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Gas Used: 6, Remaining: 999994
-DEBUG: Consuming 200 gas for opcode 0x39
-DEBUG: Pushed 20
-DEBUG: PC=2, Stack=[10, 20], Storage={}
-DEBUG: Gas Used: 200, Remaining: 999800
-INFO: Executing: Opcode: 0xc, Data: None
-DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Consuming 5 gas for opcode 0xc
-DEBUG: Gas Used: 11, Remaining: 999989
-DEBUG: PC=1, Stack=[0], Storage={}
-DEBUG: Multiplied 10 * 20 = 200
-INFO: Executing: Opcode: 0x0, Data: None
-DEBUG: PC=3, Stack=[200], Storage={}
-DEBUG: Consuming 0 gas for opcode 0x0
-INFO: Executing: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Gas Used: 200, Remaining: 999800
-DEBUG: Consuming 20000 gas for opcode 0x3a
-INFO: Stopping execution
-DEBUG: Gas Used: 20011, Remaining: 979989
-INFO: Transaction 1 succeeded
-INFO: Stored 200 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 200}
-INFO: Executing: Opcode: 0x0, Data: None
-DEBUG: Consuming 0 gas for opcode 0x0
-DEBUG: Gas Used: 20011, Remaining: 979989
-INFO: Stopping execution
-INFO: Transaction 1 succeeded
-INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 200}
-INFO: Merged batch 2: {}
-INFO: Final Global Storage:
-INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 200}
-INFO: 
---- Processing Java Contract ---
+--- Processing C Contract ---
 INFO: Compiling C contract
-DEBUG: Parsed statements: ['foo = 100 * 30']
-DEBUG: Processing statement: 'foo = 100 * 30'
-DEBUG: Compiled foo = 100 * 30 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-INFO: Compiled bytecode: 3064301e0c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
+DEBUG: Detected state variables: ['x', 'y', 'z']
+DEBUG: Parsed statements: ['x = 100', 'y = 50', 'if (x > y) {\n        z = 10;']
+DEBUG: Processing statement: 'x = 100'
+DEBUG: Compiled x = 100 at 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Processing statement: 'y = 50'
+DEBUG: Compiled y = 50 at a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Processing statement: 'if (x > y) {
+        z = 10;'
+DEBUG: If block content: '
+        z = 10;'
+DEBUG: Block statements after split: ['z = 10']
+DEBUG: Compiling block statement: 'z = 10'
+DEBUG: Processing statement: 'z = 10'
+DEBUG: Compiled z = 10 at 594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06
+DEBUG: Compiled if (x > y) { 
+        z = 10; }
+INFO: Compiled bytecode: 30643a2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a488130323aa1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa392d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a488139a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa21020023300a3a594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b060300, Gas: 60423
 INFO: Starting transaction processing
 INFO: Created 2 batches
 INFO: Processing batch of 1 transactions
-INFO: Transaction 1: Bytecode=3064301e0c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
-INFO: Processing batch of 1 transactions
+INFO: Transaction 1: Bytecode=30643a2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a488130323aa1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa392d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a488139a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa21020023300a3a594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b060300
 INFO: Initializing BVM
 INFO: Parsing bytecode
-INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
 DEBUG: Parsed: Opcode: 0x30, Data: 64
-INFO: Initializing BVM
-DEBUG: Parsed: Opcode: 0x30, Data: 1e
-INFO: Parsing bytecode
-DEBUG: Parsed: Opcode: 0xc, Data: None
-DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x3a, Data: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Parsed: Opcode: 0x30, Data: 32
+DEBUG: Parsed: Opcode: 0x3a, Data: a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Parsed: Opcode: 0x39, Data: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Parsed: Opcode: 0x39, Data: a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Parsed: Opcode: 0x21, Data: None
+DEBUG: Parsed: Opcode: 0x2, Data: 0023
+DEBUG: Parsed: Opcode: 0x30, Data: 0a
+DEBUG: Parsed: Opcode: 0x3a, Data: 594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06
+DEBUG: Parsed: Opcode: 0x3, Data: None
 DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 12
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x30, Data: 64
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 3, Remaining: 999997
+DEBUG: Pushed 100
+DEBUG: PC=1, Stack=[100], Storage={}
+INFO: Executing: Opcode: 0x3a, Data: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Consuming 20000 gas for opcode 0x3a
+DEBUG: Gas Used: 20003, Remaining: 979997
+INFO: Processing batch of 3 transactions
+INFO: Stored 100 at 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+INFO: Transaction 1: Bytecode=392d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a488100
+DEBUG: PC=2, Stack=[], Storage={b'-q\x16B\xb7&\xb0D\x01b|\xa9\xfb\xac2\xf5\xc8S\x0f\xb1\x90<\xc4\xdb\x02%\x87\x17\x92\x1aH\x81': 100}
+INFO: Initializing BVM
+INFO: Executing: Opcode: 0x30, Data: 32
+INFO: Parsing bytecode
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Parsed: Opcode: 0x39, Data: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Gas Used: 20006, Remaining: 979994
+DEBUG: Parsed: Opcode: 0x0, Data: None
+DEBUG: Pushed 50
+DEBUG: PC=3, Stack=[50], Storage={b'-q\x16B\xb7&\xb0D\x01b|\xa9\xfb\xac2\xf5\xc8S\x0f\xb1\x90<\xc4\xdb\x02%\x87\x17\x92\x1aH\x81': 100}
+INFO: Executing: Opcode: 0x3a, Data: a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Consuming 20000 gas for opcode 0x3a
+DEBUG: Gas Used: 40006, Remaining: 959994
+INFO: Stored 50 at a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: PC=4, Stack=[], Storage={b'-q\x16B\xb7&\xb0D\x01b|\xa9\xfb\xac2\xf5\xc8S\x0f\xb1\x90<\xc4\xdb\x02%\x87\x17\x92\x1aH\x81': 100, b'\xa1\xfc\xe468T\xff\x88\x8c\xffK\x8exu\xd6\x00\xc2h#\x90A*\x8c\xf7\x9b7\xd0\xb1\x11H\xb0\xfa': 50}
+INFO: Executing: Opcode: 0x39, Data: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 40206, Remaining: 959794
+DEBUG: Loaded 100 from 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: PC=5, Stack=[100], Storage={b'-q\x16B\xb7&\xb0D\x01b|\xa9\xfb\xac2\xf5\xc8S\x0f\xb1\x90<\xc4\xdb\x02%\x87\x17\x92\x1aH\x81': 100, b'\xa1\xfc\xe468T\xff\x88\x8c\xffK\x8exu\xd6\x00\xc2h#\x90A*\x8c\xf7\x9b7\xd0\xb1\x11H\xb0\xfa': 50}
+INFO: Executing: Opcode: 0x39, Data: a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 40406, Remaining: 959594
+DEBUG: Loaded 50 from a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: PC=6, Stack=[100, 50], Storage={b'-q\x16B\xb7&\xb0D\x01b|\xa9\xfb\xac2\xf5\xc8S\x0f\xb1\x90<\xc4\xdb\x02%\x87\x17\x92\x1aH\x81': 100, b'\xa1\xfc\xe468T\xff\x88\x8c\xffK\x8exu\xd6\x00\xc2h#\x90A*\x8c\xf7\x9b7\xd0\xb1\x11H\xb0\xfa': 50}
+INFO: Executing: Opcode: 0x21, Data: None
+DEBUG: Consuming 0 gas for opcode 0x21
+DEBUG: Gas Used: 40406, Remaining: 959594
+ERROR: Execution failed: Unknown opcode 0x21
+WARNING: Transaction 1 failed
+INFO: Gas Limit: 1000000, Instructions: 2
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x39, Data: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Executing: Opcode: 0x0, Data: None
+DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
+INFO: Transaction 2: Bytecode=39594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b0600
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x39, Data: 594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06
 DEBUG: Parsed: Opcode: 0x0, Data: None
 INFO: Gas Limit: 1000000, Instructions: 2
-INFO: Gas Limit: 1000000, Instructions: 5
-INFO: Starting execution
 INFO: Starting execution
 DEBUG: PC=0, Stack=[], Storage={}
-DEBUG: PC=0, Stack=[], Storage={}
-INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-INFO: Executing: Opcode: 0x30, Data: 64
+INFO: Executing: Opcode: 0x39, Data: 594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06
 DEBUG: Consuming 200 gas for opcode 0x39
-DEBUG: Consuming 3 gas for opcode 0x30
 DEBUG: Gas Used: 200, Remaining: 999800
-DEBUG: Gas Used: 3, Remaining: 999997
-DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Pushed 100
+DEBUG: Loaded 0 from 594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06
 DEBUG: PC=1, Stack=[0], Storage={}
-DEBUG: PC=1, Stack=[100], Storage={}
 INFO: Executing: Opcode: 0x0, Data: None
-INFO: Executing: Opcode: 0x30, Data: 1e
 DEBUG: Consuming 0 gas for opcode 0x0
-DEBUG: Consuming 3 gas for opcode 0x30
 DEBUG: Gas Used: 200, Remaining: 999800
-DEBUG: Gas Used: 6, Remaining: 999994
 INFO: Stopping execution
-DEBUG: Pushed 30
-INFO: Transaction 1 succeeded
-DEBUG: PC=2, Stack=[100, 30], Storage={}
-INFO: Executing: Opcode: 0xc, Data: None
-DEBUG: Consuming 5 gas for opcode 0xc
-DEBUG: Gas Used: 11, Remaining: 999989
-DEBUG: Multiplied 100 * 30 = 3000
-DEBUG: PC=3, Stack=[3000], Storage={}
-INFO: Executing: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Consuming 20000 gas for opcode 0x3a
-DEBUG: Gas Used: 20011, Remaining: 979989
-INFO: Stored 3000 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 3000}
+INFO: Transaction 2 succeeded
+INFO: Transaction 3: Bytecode=39a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa00
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x39, Data: a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 2
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x39, Data: a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa
+DEBUG: PC=1, Stack=[0], Storage={}
 INFO: Executing: Opcode: 0x0, Data: None
 DEBUG: Consuming 0 gas for opcode 0x0
-DEBUG: Gas Used: 20011, Remaining: 979989
+DEBUG: Gas Used: 200, Remaining: 999800
 INFO: Stopping execution
-INFO: Transaction 1 succeeded
-INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 3000}
+INFO: Transaction 3 succeeded
+WARNING: Batch 1 failed
 INFO: Merged batch 2: {}
 INFO: Final Global Storage:
-INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 3000}
-INFO: 
---- Processing Sol Contract ---
-INFO: Compiling Solidity contract
-DEBUG: Detected state variables: ['foo', 'bar']
-DEBUG: Parsed Solidity statements: ['bar = 150', 'if (bar > 100) {\n            foo = 10 * 20;']
-DEBUG: Processing statement: 'bar = 150'
-DEBUG: Compiled bar = 150 at fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
-DEBUG: Processing statement: 'if (bar > 100) {
-            foo = 10 * 20;'
-ERROR: Compilation failed: Unsupported statement: if (bar > 100) {
-            foo = 10 * 20;
+INFO: {}
 INFO: 
 --- Processing C Contract ---
 INFO: Compiling C contract
 DEBUG: Detected state variables: ['foo', 'bar']
-DEBUG: Parsed statements: ['bar = 150', 'if (bar > 100) {\n        foo = 10 * 20;']
-DEBUG: Processing statement: 'bar = 150'
-DEBUG: Compiled bar = 150 at fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
-DEBUG: Processing statement: 'if (bar > 100) {
-        foo = 10 * 20;'
-ERROR: Compilation failed: Unsupported statement: if (bar > 100) {
-        foo = 10 * 20;
-INFO: 
---- Processing Sol Contract ---
-INFO: Compiling Solidity contract
-DEBUG: Detected state variables: ['foo', 'bar']
-DEBUG: Parsed Solidity statements: ['bar = 150', 'if (bar > 100) {\n            foo = 10 * 20;']
-DEBUG: Processing statement: 'bar = 150'
-DEBUG: Compiled bar = 150 at fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
-DEBUG: Processing statement: 'if (bar > 100) {
-            foo = 10 * 20;'
-ERROR: Compilation failed: Unsupported statement: if (bar > 100) {
-            foo = 10 * 20;
-INFO: 
---- Processing Sol Contract ---
-INFO: Compiling Solidity contract
-DEBUG: Detected state variables: ['foo']
-DEBUG: Parsed Solidity statements: ['foo = 10 * 2']
-DEBUG: Processing statement: 'foo = 10 * 2'
-DEBUG: Compiled foo = 10 * 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-INFO: Compiled bytecode: 300a30020c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
+DEBUG: Parsed statements: ['foo = 10 / 2']
+DEBUG: Processing statement: 'foo = 10 / 2'
+DEBUG: Compiled foo = 10 / 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Compiled bytecode: 300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
 INFO: Starting transaction processing
 INFO: Created 2 batches
 INFO: Processing batch of 1 transactions
-INFO: Processing batch of 1 transactions
-INFO: Transaction 1: Bytecode=300a30020c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
-INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+INFO: Transaction 1: Bytecode=300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
 INFO: Initializing BVM
-INFO: Initializing BVM
-INFO: Parsing bytecode
 INFO: Parsing bytecode
 DEBUG: Parsed: Opcode: 0x30, Data: 0a
 DEBUG: Parsed: Opcode: 0x30, Data: 02
-DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Parsed: Opcode: 0xc, Data: None
-DEBUG: Parsed: Opcode: 0x0, Data: None
+DEBUG: Parsed: Opcode: 0xd, Data: None
 DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-INFO: Gas Limit: 1000000, Instructions: 2
 DEBUG: Parsed: Opcode: 0x0, Data: None
-INFO: Starting execution
 INFO: Gas Limit: 1000000, Instructions: 5
-DEBUG: PC=0, Stack=[], Storage={}
 INFO: Starting execution
-INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
 DEBUG: PC=0, Stack=[], Storage={}
-DEBUG: Consuming 200 gas for opcode 0x39
 INFO: Executing: Opcode: 0x30, Data: 0a
-DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Processing batch of 1 transactions
 DEBUG: Consuming 3 gas for opcode 0x30
-DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
 DEBUG: Gas Used: 3, Remaining: 999997
-DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Initializing BVM
 DEBUG: Pushed 10
-INFO: Executing: Opcode: 0x0, Data: None
+INFO: Parsing bytecode
 DEBUG: PC=1, Stack=[10], Storage={}
+DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Executing: Opcode: 0x30, Data: 02
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 2
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 6, Remaining: 999994
+INFO: Starting execution
+DEBUG: Pushed 2
+DEBUG: PC=0, Stack=[], Storage={}
+DEBUG: PC=2, Stack=[10, 2], Storage={}
+INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Executing: Opcode: 0xd, Data: None
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Consuming 5 gas for opcode 0xd
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Gas Used: 11, Remaining: 999989
+DEBUG: PC=1, Stack=[0], Storage={}
+ERROR: Execution failed: Unknown opcode 0xd
+INFO: Executing: Opcode: 0x0, Data: None
 DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 200, Remaining: 999800
+WARNING: Transaction 1 failed
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
+WARNING: Batch 1 failed
+INFO: Merged batch 2: {}
+INFO: Final Global Storage:
+INFO: {}
+INFO: 
+--- Processing C Contract ---
+INFO: Compiling C contract
+DEBUG: Detected state variables: ['foo']
+DEBUG: Parsed statements: ['foo = 10 / 2']
+DEBUG: Processing statement: 'foo = 10 / 2'
+DEBUG: Compiled foo = 10 / 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Compiled bytecode: 300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
+INFO: Starting transaction processing
+INFO: Created 2 batches
+INFO: Processing batch of 1 transactions
+INFO: Transaction 1: Bytecode=300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x30, Data: 0a
+DEBUG: Parsed: Opcode: 0x30, Data: 02
+DEBUG: Parsed: Opcode: 0xd, Data: None
+DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 5
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x30, Data: 0a
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 3, Remaining: 999997
+INFO: Processing batch of 1 transactions
+INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 2
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+DEBUG: Pushed 10
+INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: PC=1, Stack=[10], Storage={}
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Executing: Opcode: 0x0, Data: None
+DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
 INFO: Executing: Opcode: 0x30, Data: 02
 DEBUG: Consuming 3 gas for opcode 0x30
 DEBUG: Gas Used: 6, Remaining: 999994
-DEBUG: Gas Used: 200, Remaining: 999800
 DEBUG: Pushed 2
-INFO: Stopping execution
 DEBUG: PC=2, Stack=[10, 2], Storage={}
-INFO: Transaction 1 succeeded
-INFO: Executing: Opcode: 0xc, Data: None
-DEBUG: Consuming 5 gas for opcode 0xc
+INFO: Executing: Opcode: 0xd, Data: None
+DEBUG: Consuming 5 gas for opcode 0xd
 DEBUG: Gas Used: 11, Remaining: 999989
-DEBUG: Multiplied 10 * 2 = 20
-DEBUG: PC=3, Stack=[20], Storage={}
+ERROR: Execution failed: Unknown opcode 0xd
+WARNING: Transaction 1 failed
+WARNING: Batch 1 failed
+INFO: Merged batch 2: {}
+INFO: Final Global Storage:
+INFO: {}
+INFO: 
+--- Processing C Contract ---
+INFO: Compiling C contract
+DEBUG: Detected state variables: ['foo']
+DEBUG: Parsed statements: ['foo = 10 / 2']
+DEBUG: Processing statement: 'foo = 10 / 2'
+DEBUG: Compiled foo = 10 / 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Compiled bytecode: 300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
+INFO: Starting transaction processing
+INFO: Created 2 batches
+INFO: Processing batch of 1 transactions
+INFO: Transaction 1: Bytecode=300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x30, Data: 0a
+DEBUG: Parsed: Opcode: 0x30, Data: 02
+DEBUG: Parsed: Opcode: 0xd, Data: None
+DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Processing batch of 1 transactions
+INFO: Gas Limit: 1000000, Instructions: 5
+INFO: Starting execution
+INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Initializing BVM
+INFO: Executing: Opcode: 0x30, Data: 0a
+INFO: Parsing bytecode
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Gas Used: 3, Remaining: 999997
+DEBUG: Parsed: Opcode: 0x0, Data: None
+DEBUG: Pushed 10
+INFO: Gas Limit: 1000000, Instructions: 2
+DEBUG: PC=1, Stack=[10], Storage={}
+INFO: Executing: Opcode: 0x30, Data: 02
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 6, Remaining: 999994
+DEBUG: Pushed 2
+DEBUG: PC=2, Stack=[10, 2], Storage={}
+INFO: Executing: Opcode: 0xd, Data: None
+DEBUG: Consuming 5 gas for opcode 0xd
+DEBUG: Gas Used: 11, Remaining: 999989
+DEBUG: Divided 10 / 2 = 5
+DEBUG: PC=3, Stack=[5], Storage={}
 INFO: Executing: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
 DEBUG: Consuming 20000 gas for opcode 0x3a
 DEBUG: Gas Used: 20011, Remaining: 979989
-INFO: Stored 20 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 20}
+INFO: Stored 5 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
 INFO: Executing: Opcode: 0x0, Data: None
 DEBUG: Consuming 0 gas for opcode 0x0
 DEBUG: Gas Used: 20011, Remaining: 979989
 INFO: Stopping execution
 INFO: Transaction 1 succeeded
-INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 20}
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Executing: Opcode: 0x0, Data: None
+DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
+INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
 INFO: Merged batch 2: {}
 INFO: Final Global Storage:
-INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 20}
-ERROR: Input error: File must have a .sol extension for Sol contracts.
+INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
 INFO: 
 --- Processing Sol Contract ---
 INFO: Compiling Solidity contract
 DEBUG: Detected state variables: ['foo']
-DEBUG: Parsed Solidity statements: ['foo = 13 * 2']
-DEBUG: Processing statement: 'foo = 13 * 2'
-DEBUG: Compiled foo = 13 * 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-INFO: Compiled bytecode: 300d30020c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
+DEBUG: Parsed Solidity statements: ['foo = 14 / 2']
+DEBUG: Processing statement: 'foo = 14 / 2'
+DEBUG: Compiled foo = 14 / 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Compiled bytecode: 300e30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00, Gas: 20011
 INFO: Starting transaction processing
 INFO: Created 2 batches
 INFO: Processing batch of 1 transactions
-INFO: Transaction 1: Bytecode=300d30020c3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+INFO: Transaction 1: Bytecode=300e30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
 INFO: Initializing BVM
 INFO: Parsing bytecode
-DEBUG: Parsed: Opcode: 0x30, Data: 0d
-INFO: Processing batch of 1 transactions
+DEBUG: Parsed: Opcode: 0x30, Data: 0e
 DEBUG: Parsed: Opcode: 0x30, Data: 02
-INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
-DEBUG: Parsed: Opcode: 0xc, Data: None
-INFO: Initializing BVM
-INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0xd, Data: None
 DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
 DEBUG: Parsed: Opcode: 0x0, Data: None
-DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
 INFO: Gas Limit: 1000000, Instructions: 5
-DEBUG: Parsed: Opcode: 0x0, Data: None
 INFO: Starting execution
-INFO: Gas Limit: 1000000, Instructions: 2
 DEBUG: PC=0, Stack=[], Storage={}
-INFO: Starting execution
-INFO: Executing: Opcode: 0x30, Data: 0d
-DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x30, Data: 0e
 DEBUG: Consuming 3 gas for opcode 0x30
-INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Consuming 200 gas for opcode 0x39
 DEBUG: Gas Used: 3, Remaining: 999997
-DEBUG: Gas Used: 200, Remaining: 999800
-DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: Pushed 13
-DEBUG: PC=1, Stack=[13], Storage={}
-DEBUG: PC=1, Stack=[0], Storage={}
+DEBUG: Pushed 14
+DEBUG: PC=1, Stack=[14], Storage={}
 INFO: Executing: Opcode: 0x30, Data: 02
-INFO: Executing: Opcode: 0x0, Data: None
 DEBUG: Consuming 3 gas for opcode 0x30
-DEBUG: Consuming 0 gas for opcode 0x0
 DEBUG: Gas Used: 6, Remaining: 999994
-DEBUG: Gas Used: 200, Remaining: 999800
 DEBUG: Pushed 2
-INFO: Stopping execution
-DEBUG: PC=2, Stack=[13, 2], Storage={}
-INFO: Transaction 1 succeeded
-INFO: Executing: Opcode: 0xc, Data: None
-DEBUG: Consuming 5 gas for opcode 0xc
+DEBUG: PC=2, Stack=[14, 2], Storage={}
+INFO: Processing batch of 1 transactions
+INFO: Executing: Opcode: 0xd, Data: None
+INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+DEBUG: Consuming 5 gas for opcode 0xd
+INFO: Initializing BVM
+INFO: Parsing bytecode
 DEBUG: Gas Used: 11, Remaining: 999989
-DEBUG: Multiplied 13 * 2 = 26
-DEBUG: PC=3, Stack=[26], Storage={}
-INFO: Executing: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 2
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Divided 14 / 2 = 7
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: PC=3, Stack=[7], Storage={}
+DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Executing: Opcode: 0x0, Data: None
+46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
 DEBUG: Consuming 20000 gas for opcode 0x3a
+DEBUG: Consuming 0 gas for opcode 0x0
 DEBUG: Gas Used: 20011, Remaining: 979989
-INFO: Stored 26 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
-DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 26}
+DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Stored 7 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
+DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 7}
 INFO: Executing: Opcode: 0x0, Data: None
 DEBUG: Consuming 0 gas for opcode 0x0
 DEBUG: Gas Used: 20011, Remaining: 979989
 INFO: Stopping execution
 INFO: Transaction 1 succeeded
-INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 26}
+INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 7}
 INFO: Merged batch 2: {}
 INFO: Final Global Storage:
-INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 26}
+INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 7}

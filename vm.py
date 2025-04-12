@@ -36,6 +36,7 @@ class BVM:
             CoolOps.ADD: 3,
             CoolOps.SUB: 5,
             CoolOps.MUL: 5,   # New: Gas cost for MUL, similar to EVM
+            CoolOps.DIV: 5,
             CoolOps.SSTORE: 20000,  # Simplified; could be dynamic
             CoolOps.SLOAD: 200,
             CoolOps.JUMPI: 10,
@@ -122,6 +123,17 @@ class BVM:
                 b, a = self.stack.pop(), self.stack.pop()
                 self.stack.append(a * b)
                 logger.debug(f"Multiplied {a} * {b} = {a * b}")
+                self.pc += 1
+            else:
+                self.fail("Stack underflow")
+        elif instruction.opcode == CoolOps.DIV:
+            if len(self.stack) >= 2:
+                b, a = self.stack.pop(), self.stack.pop()
+                if b == 0:
+                    self.fail("Division by zero")
+                    return
+                self.stack.append(a // b)  # Integer division
+                logger.debug(f"Divided {a} / {b} = {a // b}")
                 self.pc += 1
             else:
                 self.fail("Stack underflow")

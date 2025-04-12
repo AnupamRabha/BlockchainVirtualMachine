@@ -6,6 +6,6 @@ contract MyContract {
    
 
     function calc() public {
-        foo = 13 * 2;
+        foo = 14 / 2;
     }
 }

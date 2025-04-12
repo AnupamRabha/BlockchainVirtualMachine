@@ -1,0 +1,237 @@
+Blockchain Compiler Project
+Overview
+This project is a compiler suite designed to translate high-level smart contract code written in C, Java, C++, and Solidity into bytecode executable on a custom Blockchain Virtual Machine (BVM). The compiler supports basic arithmetic operations (addition, subtraction, multiplication), variable assignments, and conditional statements (if with optional else). It generates efficient bytecode with gas costs, storage key tracking, and error handling, making it suitable for blockchain-based applications.
+
+The project includes:
+
+Compilers: CCompiler, JavaCompiler, CppCompiler, and SolidityCompiler for parsing and compiling respective languages.
+Virtual Machine: A BVM (vm.py) to execute the compiled bytecode.
+Blockchain Integration: Transaction and blockchain management (transaction.py, blockchain.py) for processing and storing contract state.
+Opcode Definitions: Custom opcodes (opcodes.py) like ADD, SUB, MUL, GT, JUMPI, etc., for BVM execution.
+Logging: Configurable logging (logging_config.py) for debugging and monitoring compilation and execution.
+Features
+Language Support:
+C: Compiles contracts with int state variables, arithmetic (+, -, *), assignments, and if statements (e.g., if (x > 50) { ... } with optional else).
+Java/C++: Inherits C compiler functionality (currently identical to CCompiler).
+Solidity: Compiles contracts with uint256 public variables and similar operations.
+Bytecode Generation:
+Produces bytecode using opcodes like PUSH1, SSTORE, SLOAD, JUMPDEST, etc.
+Tracks gas costs for operations (e.g., SSTORE: 20,000 gas, SLOAD: 200 gas).
+Manages storage keys with SHA256 hashing for variables.
+Conditional Logic:
+Supports if statements with > comparisons in C (e.g., if (bar > 50) { foo = 20 * 10; }).
+Optional else clause for flexible control flow.
+Error Handling:
+Validates variable declarations and syntax.
+Returns detailed error messages for unsupported statements or missing functions.
+Extensibility:
+Modular compiler design for adding new languages or opcodes.
+Easy to extend for additional operators (e.g., <, ==) or features like loops.
+Prerequisites
+Python: 3.8 or higher
+Dependencies: None (standard library used for re, hashlib, typing, logging)
+Installation
+Clone the Repository:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+git clone https://github.com/yourusername/blockchain-compiler.git
+cd blockchain-compiler
+Verify Files: Ensure the following files are present:
+compiler.py: Contains CCompiler, JavaCompiler, CppCompiler, SolidityCompiler.
+main.py: Entry point for running the compiler and BVM.
+vm.py: Blockchain Virtual Machine implementation.
+transaction.py: Transaction processing logic.
+blockchain.py: Blockchain state management.
+opcodes.py: Opcode definitions (e.g., CoolOps.ADD, CoolOps.GT).
+logging_config.py: Logging setup.
+Set Up Environment (optional): Create a virtual environment to isolate dependencies:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+Usage
+Write a Contract:
+Create a contract file (e.g., contract.c) with supported syntax. Example:
+
+c
+
+Collapse
+
+Wrap
+
+Copy
+#include <stdint.h>
+int foo;
+int bar;
+void calc() {
+    foo = 100 - 30;
+    bar = foo;
+    if (bar > 50) {
+        foo = 20 * 10;
+    }
+}
+For Solidity:
+
+solidity
+
+Collapse
+
+Wrap
+
+Copy
+pragma solidity ^0.8.0;
+contract Simple {
+    uint256 public foo;
+    uint256 public bar;
+    function calc() public {
+        foo = 100 - 30;
+        bar = foo;
+        if (bar > 50) {
+            foo = 20 * 10;
+        }
+    }
+}
+Run the Compiler:
+Execute main.py with the contract file as an argument:
+
+bash
+
+Collapse
+
+Wrap
+
+Copy
+python main.py contract.c
+Expected Output:
+The compiler processes the contract, generates bytecode, and executes it on the BVM. Sample output for the C contract above:
+
+text
+
+Collapse
+
+Wrap
+
+Copy
+--- Processing C Contract ---
+INFO: Compiling C contract
+DEBUG: Detected state variables: ['foo', 'bar']
+DEBUG: Parsed statements: ['foo = 100 - 30', 'bar = foo', 'if (bar > 50) { foo = 20 * 10 }']
+DEBUG: Compiled foo = 100 - 30 at 2c26b46b...
+DEBUG: Compiled bar = foo
+DEBUG: Compiled foo = 20 * 10 at 2c26b46b...
+DEBUG: Compiled if (bar > 50) { foo = 20 * 10 }
+INFO: Compiled bytecode: 3064301e0b3a..., Gas: 60440
+INFO: Starting transaction processing
+INFO: Final Global Storage:
+INFO: {b'2c26b46b...': 200, b'fcde2b2e...': 70}
+foo = 200 (from 20 * 10, since bar = 70 > 50).
+bar = 70 (from foo = 100 - 30).
+Debugging:
+
+Check logs in the console for detailed compilation and execution steps.
+Modify logging_config.py to adjust log levels (e.g., DEBUG for verbose output).
+Project Structure
+text
+
+Collapse
+
+Wrap
+
+Copy
+blockchain-compiler/
+├── compiler.py         # Compiler implementations
+├── main.py            # Main script to run compiler and BVM
+├── vm.py              # Blockchain Virtual Machine
+├── transaction.py     # Transaction processing
+├── blockchain.py      # Blockchain state management
+├── opcodes.py         # Opcode definitions
+├── logging_config.py  # Logging configuration
+├── contract.c         # Example contract
+└── README.md          # This file
+Supported Syntax
+C/Java/C++
+State Variables: int foo;
+Function: void calc() { ... }
+Operations:
+Arithmetic: foo = 10 + 20;, foo = 100 - 30;, foo = 20 * 10;
+Assignment: foo = 150;, bar = foo;
+Conditional: if (bar > 50) { foo = 20 * 10; } (optional else { ... })
+Limitations: No loops, no < or == comparisons (yet).
+Solidity
+State Variables: uint256 public foo;
+Function: function calc() public { ... }
+Operations: Same as C, with Solidity syntax.
+Limitations: Similar to C, plus no require or events.
+Gas Costs
+PUSH1: 3 gas
+ADD: 3 gas
+SUB: 5 gas
+MUL: 5 gas
+SLOAD: 200 gas
+SSTORE: 20,000 gas
+GT: 3 gas
+JUMPI: 10 gas
+JUMP: 8 gas
+JUMPDEST: 1 gas
+STOP: 0 gas
+Example contract gas: ~60,440 gas (varies by operations).
+
+Contributing
+Fork the Repository:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+git clone https://github.com/yourusername/blockchain-compiler.git
+Create a Branch:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+git checkout -b feature/your-feature
+Make Changes:
+Add new compiler features (e.g., < operator, loops).
+Improve BVM performance.
+Enhance error messages or logging.
+Test:
+Write test contracts in contract.c or contract.sol.
+Run python main.py contract.c and verify output.
+Ensure no regressions in existing functionality.
+Submit a Pull Request:
+Push your branch: git push origin feature/your-feature.
+Open a PR with a clear description of changes.
+Future Enhancements
+Support for <, ==, >=, <=, != in conditionals.
+Loops (for, while) for iterative logic.
+Function calls and local variables.
+Advanced Solidity features (require, events, mappings).
+Gas optimization for frequent operations.
+Unit tests for compilers and BVM.
+License
+MIT License. See LICENSE for details.
+
+Contact
+For questions or feedback, open an issue or contact [your.email@example.com].
+
+Notes
+GitHub Link: Replace yourusername with your actual GitHub username or remove if not hosted yet.
+License: Assumed MIT; change if you prefer another.
+Contact: Add your email or preferred contact method.
+Enhancements: Listed based on our discussions (e.g., adding <, ==). I can expand this section if you have specific plans.
+Testing: Assumes manual testing via main.py. If you have automated tests, I can update the README to include them.
