@@ -400,3 +400,117 @@ DEBUG: Detected state variables: ['foo']
 DEBUG: Parsed Solidity statements: ['foo = (14 / 2) + (10 *2)']
 DEBUG: Processing statement: 'foo = (14 / 2) + (10 *2)'
 ERROR: Compilation failed: Unsupported statement: foo = (14 / 2) + (10 *2)
+INFO: 
+--- Processing C Contract ---
+INFO: Compiling C contract
+DEBUG: Detected state variables: ['foo', 'bar']
+DEBUG: Parsed statements: ['foo = 10 / 2', 'bar = 17 + 78']
+DEBUG: Processing statement: 'foo = 10 / 2'
+DEBUG: Compiled foo = 10 / 2 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Processing statement: 'bar = 17 + 78'
+DEBUG: Compiled bar = 17 + 78 at fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+INFO: Compiled bytecode: 300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae3011304e0a3afcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb900, Gas: 40020
+INFO: Starting transaction processing
+INFO: Created 2 batches
+INFO: Processing batch of 1 transactions
+INFO: Transaction 1: Bytecode=300a30020d3a2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae3011304e0a3afcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb900
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x30, Data: 0a
+INFO: Processing batch of 2 transactions
+DEBUG: Parsed: Opcode: 0x30, Data: 02
+INFO: Transaction 1: Bytecode=392c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae00
+DEBUG: Parsed: Opcode: 0xd, Data: None
+DEBUG: Parsed: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x30, Data: 11
+DEBUG: Parsed: Opcode: 0x30, Data: 4e
+DEBUG: Parsed: Opcode: 0xa, Data: None
+DEBUG: Parsed: Opcode: 0x3a, Data: fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 9
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x30, Data: 0a
+INFO: Initializing BVM
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 3, Remaining: 999997
+DEBUG: Pushed 10
+DEBUG: PC=1, Stack=[10], Storage={}
+INFO: Executing: Opcode: 0x30, Data: 02
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 6, Remaining: 999994
+DEBUG: Pushed 2
+DEBUG: PC=2, Stack=[10, 2], Storage={}
+INFO: Executing: Opcode: 0xd, Data: None
+DEBUG: Consuming 5 gas for opcode 0xd
+DEBUG: Gas Used: 11, Remaining: 999989
+DEBUG: Divided 10 / 2 = 5
+DEBUG: PC=3, Stack=[5], Storage={}
+INFO: Executing: Opcode: 0x3a, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Consuming 20000 gas for opcode 0x3a
+DEBUG: Gas Used: 20011, Remaining: 979989
+INFO: Stored 5 at 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: PC=4, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
+INFO: Executing: Opcode: 0x30, Data: 11
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 20014, Remaining: 979986
+DEBUG: Pushed 17
+DEBUG: PC=5, Stack=[17], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
+INFO: Executing: Opcode: 0x30, Data: 4e
+DEBUG: Consuming 3 gas for opcode 0x30
+DEBUG: Gas Used: 20017, Remaining: 979983
+DEBUG: Pushed 78
+DEBUG: PC=6, Stack=[17, 78], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
+INFO: Executing: Opcode: 0xa, Data: None
+DEBUG: Consuming 3 gas for opcode 0xa
+DEBUG: Gas Used: 20020, Remaining: 979980
+DEBUG: Added 17 + 78 = 95
+DEBUG: PC=7, Stack=[95], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5}
+INFO: Executing: Opcode: 0x3a, Data: fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+DEBUG: Consuming 20000 gas for opcode 0x3a
+DEBUG: Gas Used: 40020, Remaining: 959980
+INFO: Stored 95 at fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+INFO: Parsing bytecode
+DEBUG: PC=8, Stack=[], Storage={b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5, b'\xfc\xde+.\xdb\xa5k\xf4\x08`\x1f\xb7!\xfe\x9b\\3\x8d\x10\xeeB\x9e\xa0O\xaeU\x11\xb6\x8f\xbf\x8f\xb9': 95}
+INFO: Executing: Opcode: 0x0, Data: None
+DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 40020, Remaining: 959980
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
+DEBUG: Parsed: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 2
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x39, Data: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Executing: Opcode: 0x0, Data: None
+DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Stopping execution
+INFO: Transaction 1 succeeded
+INFO: Transaction 2: Bytecode=39fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb900
+INFO: Initializing BVM
+INFO: Parsing bytecode
+DEBUG: Parsed: Opcode: 0x39, Data: fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+DEBUG: Parsed: Opcode: 0x0, Data: None
+INFO: Gas Limit: 1000000, Instructions: 2
+INFO: Starting execution
+DEBUG: PC=0, Stack=[], Storage={}
+INFO: Executing: Opcode: 0x39, Data: fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+DEBUG: Consuming 200 gas for opcode 0x39
+DEBUG: Gas Used: 200, Remaining: 999800
+DEBUG: Loaded 0 from fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9
+DEBUG: PC=1, Stack=[0], Storage={}
+INFO: Executing: Opcode: 0x0, Data: None
+DEBUG: Consuming 0 gas for opcode 0x0
+DEBUG: Gas Used: 200, Remaining: 999800
+INFO: Stopping execution
+INFO: Transaction 2 succeeded
+INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5, b'\xfc\xde+.\xdb\xa5k\xf4\x08`\x1f\xb7!\xfe\x9b\\3\x8d\x10\xeeB\x9e\xa0O\xaeU\x11\xb6\x8f\xbf\x8f\xb9': 95}
+INFO: Merged batch 2: {}
+INFO: Final Global Storage:
+INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 5, b'\xfc\xde+.\xdb\xa5k\xf4\x08`\x1f\xb7!\xfe\x9b\\3\x8d\x10\xeeB\x9e\xa0O\xaeU\x11\xb6\x8f\xbf\x8f\xb9': 95}
