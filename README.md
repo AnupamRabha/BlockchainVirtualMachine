@@ -8,7 +8,6 @@ This project is a **compiler suite** that translates high-level smart contract c
 It supports:
 - Arithmetic operations (`+`, `-`, `*`, `/`)
 - Variable assignments
-- Conditional statements (`if`)
 - Efficient bytecode generation with **gas tracking**, **storage key hashing**, and **error handling** for blockchain-ready deployment.
 
 ---
@@ -57,7 +56,7 @@ blockchain-compiler/
 
 - No support for:
   - `<`, `==`, `!=`, `>=`, `<=` in conditionals
-  - `else` clauses
+  - `if`, `else` clauses
   - Loops (`for`, `while`)
   - Solidity-specific features like `require`, `events`, `mappings`
 
@@ -68,7 +67,7 @@ blockchain-compiler/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AnupamRabha/BlockchainVirtualMachine.gitgit
+git clone https://github.com/AnupamRabha/BlockchainVirtualMachine.git
 cd BlockchainVirtualMachine
 ```
 
