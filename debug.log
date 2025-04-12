@@ -393,3 +393,10 @@ INFO: Merged batch 1: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\x
 INFO: Merged batch 2: {}
 INFO: Final Global Storage:
 INFO: {b',&\xb4kh\xff\xc6\x8f\xf9\x9bE<\x1d0A4\x13B-pd\x83\xbf\xa0\xf9\x8a^\x88bf\xe7\xae': 7}
+INFO: 
+--- Processing Sol Contract ---
+INFO: Compiling Solidity contract
+DEBUG: Detected state variables: ['foo']
+DEBUG: Parsed Solidity statements: ['foo = (14 / 2) + (10 *2)']
+DEBUG: Processing statement: 'foo = (14 / 2) + (10 *2)'
+ERROR: Compilation failed: Unsupported statement: foo = (14 / 2) + (10 *2)
