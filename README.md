@@ -69,7 +69,7 @@ blockchain-compiler/
 
 ```bash
 git clone https://github.com/AnupamRabha/BlockchainVirtualMachine.gitgit
-cd blockchain-compiler
+cd BlockchainVirtualMachine
 ```
 
 ### 2. (Optional) Set Up a Virtual Environment
@@ -145,9 +145,9 @@ INFO: Created 2 batches .....
 ```
 
 ###  Test Locally
-
-Push your branch and open a PR with a description of your changes.
-
+```bash
+python main.py
+```
 ---
 
 ## 🔭 Future Enhancements
